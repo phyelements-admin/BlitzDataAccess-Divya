@@ -5,9 +5,7 @@ using System.Data;
 using Blitz.Models;
 using System;
 using System.Data.SqlClient;
-
-
-
+using BlitzCommon;
 namespace Blitz.Api.Controllers
 {
     [Route("api/[controller]")]
@@ -48,6 +46,27 @@ namespace Blitz.Api.Controllers
         public int Update(Project p)
         {
            return pdao.UpdateProject(p);
+        }
+
+        [HttpPost]
+        [Route("api/insert")]
+        public int insert()
+        {
+            return pdao.Insert();
+        }
+
+        [HttpGet]
+        [Route("api/getbysql")]
+        public List<Project> getbysql()
+        {
+            return pdao.GetResult();
+        }
+
+        [HttpDelete]
+        [Route("api/delete")]
+        public int delete()
+        {
+           return pdao.Delete();
         }
     }
 }

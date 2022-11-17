@@ -128,5 +128,32 @@ namespace Blitz.DataAccess
             return 1;
         }
 
+        public int Insert()
+        {
+            return DBCommon.ExecuteNonQuerySql("INSERT INTO Blitz (Id,Name,StartDate) Values (15,'dotnet','2021-06-06 14:00:00:001')");
+        }
+
+        public List<Project> GetResult()
+        {
+            DataTable dt = DBCommon.GetResultDataTableBySql("SELECT * FROM Blitz");
+            List<Project> project = new List<Project>();
+           for(int i = 0; i < dt.Rows.Count; i++)
+            {
+                Project pro = new Project();
+                pro.Id = Convert.ToInt32(dt.Rows[i]["id"]);
+                pro.Name = Convert.ToString(dt.Rows[i]["Name"]);
+                pro.StartDate = Convert.ToDateTime(dt.Rows[i]["StartDate"]);
+               project.Add(pro);
+
+
+            }
+            return project;
+
+
+        }
+        public int Delete()
+        {
+            return DBCommon.ExecuteNonQuerySql("DELETE FROM Blitz WHERE Id = 1");
+        }
     }
 }

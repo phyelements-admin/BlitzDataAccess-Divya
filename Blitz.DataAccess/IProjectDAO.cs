@@ -20,6 +20,11 @@ namespace Blitz.DataAccess
         int UpdateProject(Project p);
         int DeleteProject(int id);
 
-           
+        int Insert();
+
+        List<Project> GetResult();
+
+        int Delete();
+
     }
 }
